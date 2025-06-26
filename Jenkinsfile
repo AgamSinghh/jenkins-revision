@@ -3,8 +3,8 @@ pipeline {
     agent any
     
     environment {
-        $IMAGE_NAME = 'nodeapp_practice:v1'
-        $CONTAINER_NAME = 'jenkins_revise'
+        IMAGE_NAME = 'nodeapp_practice:v1'
+        CONTAINER_NAME = 'jenkins_revise'
     }
 
     stages {
@@ -17,21 +17,21 @@ pipeline {
 
         stage('Stopping and removing the existing containers'){
             steps{
-                sh 'docker stop $CONTAINER_NAME || true'
-                sh 'docker rm $CONTAINER_NAME || true'
+                sh "docker stop ${CONTAINER_NAME} || true"
+                sh "docker rm ${CONTAINER_NAME} || true"
             }
         }
 
         stage('Building the docker images'){
             steps{
                 echo("Building image ...")
-                sh 'docker build -t $IMAGE_NAME .'
+                sh "docker build -t ${IMAGE_NAME} ."
             }
         }
 
         stage('Running the docker container'){
             steps{
-                sh 'docker run -d --name $CONTAINER_NAME -p 8000:8000 $IMAGE_NAME'
+                sh "docker run -d --name ${CONTAINER_NAME} -p 8000:8000 ${IMAGE_NAME}"
             }
         }
 
