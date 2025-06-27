@@ -43,6 +43,8 @@ pipeline {
             sh '''
             docker image prune -f
             docker images
+            docker ps -a
+            
             '''
         }
         success {
