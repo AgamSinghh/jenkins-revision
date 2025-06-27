@@ -40,7 +40,7 @@ pipeline {
     post{
         always {
             echo "Cleaning up the <none> tag images"
-            sh 'docker iamges prune -f'
+            sh 'docker images prune -f'
         }
         success {
             echo "Build and deployment successful!"
