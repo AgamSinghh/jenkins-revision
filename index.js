@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send("Ab ek bari github hook se bhi try krke dekhlete haii");
+    res.send("Done scene haii");
 });
 
 app.listen(8000, () => {
